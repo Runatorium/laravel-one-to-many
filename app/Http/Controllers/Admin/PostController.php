@@ -50,11 +50,10 @@ class PostController extends Controller
     }
 
 
-    public function edit(Request $request)
+    public function edit(Post $post)
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $types = Type::all();
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
 
@@ -73,7 +72,7 @@ class PostController extends Controller
         $form_data = $request->all();
         $post->update($form_data);
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index', compact('post'));
     }
 
 

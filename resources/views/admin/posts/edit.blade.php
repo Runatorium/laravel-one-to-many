@@ -3,9 +3,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.posts.update') }}">
+    <form method="POST" action="{{ route('admin.posts.update', ['post' => $post->id]) }}">
 
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
             <label for="thumb" class="form-label">Url dell'immagine</label>
