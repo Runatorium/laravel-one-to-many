@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-
 @section('content')
     <table class="table">
         <thead>
@@ -18,6 +17,12 @@
                 <td>
                     <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}"><button
                             class="btn btn-primary">vedi</button></a>
+
+                </td>
+                <td>
+                    <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"><button
+                            class="btn btn-primary">edita</button></a>
+
                 </td>
                 <td>
                     <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST">

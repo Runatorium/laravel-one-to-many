@@ -50,9 +50,11 @@ class PostController extends Controller
     }
 
 
-    public function edit(Post $post)
+    public function edit(Request $request)
     {
-        //
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
     }
 
 
@@ -65,6 +67,7 @@ class PostController extends Controller
                 'title' => 'required|15',
                 'content' => 'nullable|300',
                 'thumb' => 'nullable|300',
+                'type_id' => 'nullable|exists:types,id'
             ]
         );
         $form_data = $request->all();
