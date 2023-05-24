@@ -7,14 +7,14 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">titolo</th>
-                <th scope="col">slug</th>
+                <th scope="col">type</th>
             </tr>
         </thead>
         @foreach ($posts as $post)
             <tr>
                 <td scope="row">{{ $post->id }}</td>
                 <td scope="row">{{ $post->title }}</td>
-                <td colspan="2">{{ $post->slug }}</td>
+                <td colspan="2">{{ $post->type_id }}</td>
                 <td>
                     <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}"><button
                             class="btn btn-primary">vedi</button></a>

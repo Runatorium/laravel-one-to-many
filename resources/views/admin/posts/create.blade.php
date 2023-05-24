@@ -1,6 +1,8 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-<main>
+@extends('layouts.admin')
+
+@section('content')
     <form method="POST" action="{{ route('admin.posts.store') }}">
 
         @csrf
@@ -16,9 +18,26 @@
 
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                name="title" value="{{ old('title') }}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                value="{{ old('title') }}">
             @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Categoria</label>
+
+
+            <select class="form-select" name="type_id" id="type_id">
+                <option @selected(old('type_id') == '') value="">nessuna categoria</option>
+                @foreach ($types as $type)
+                    <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+
+            </select>
+
+            @error('type_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -34,5 +53,6 @@
 
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
+@endsection
 
-</main>
+</div>
