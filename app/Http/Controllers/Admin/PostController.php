@@ -20,7 +20,7 @@ class PostController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.posts.create');
+        return view('admin.posts.create', compact('types'));
     }
 
 
@@ -31,6 +31,7 @@ class PostController extends Controller
                 'title' => 'required|max:15',
                 'content' => 'nullable|max:300',
                 'thumb' => 'nullable|max:300',
+                'type_id' => 'nullable|exists:types,id'
             ]
         );
         $form_data = $request->all();
