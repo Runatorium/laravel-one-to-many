@@ -63,9 +63,9 @@ class PostController extends Controller
 
         $request->validate(
             [
-                'title' => 'required|15',
-                'content' => 'nullable|300',
-                'thumb' => 'nullable|300',
+                'title' => 'required|max:15',
+                'content' => 'nullable|max:300',
+                'thumb' => 'nullable|max:300',
                 'type_id' => 'nullable|exists:types,id'
             ]
         );
